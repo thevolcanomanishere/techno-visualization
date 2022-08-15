@@ -162,11 +162,11 @@ export const AudiogramComposition = () => {
 						<Audio src={audioSource} />
 						{/* <Img src={jack} className="h-full m-auto" /> */}
 
-						<div className="mt-[90%]">
+						<div className="mt-[90%] z-10">
 							<AudioViz />
 						</div>
 
-						<div className="absolute top-[4%]">
+						<div className="absolute top-[4%] z-0">
 							{/* <CircleSplomper /> */}
 							<AlbumCover />
 						</div>
