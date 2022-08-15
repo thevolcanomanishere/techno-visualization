@@ -21,7 +21,7 @@ export const RemotionVideo: React.FC = () => {
 				component={AudiogramComposition}
 				durationInFrames={durationInFrames}
 				fps={fps}
-				width={1920}
+				width={1080}
 				height={1080}
 			/>
 		</>

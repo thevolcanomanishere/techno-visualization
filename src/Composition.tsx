@@ -112,13 +112,13 @@ const AlbumCover = () => {
 		fps,
 		frame,
 		audioData,
-		numberOfSamples: 256, // Use more samples to get a nicer visualisation
+		numberOfSamples: 16, // Use more samples to get a nicer visualisation
 	});
 
 	// Pick the low values because they look nicer than high values
 	// feel free to play around :)
-	const visualization = allVisualizationValues.slice(6, 7);
-	const size = Math.round(1200 * Math.sqrt(visualization[0]));
+	const visualization = allVisualizationValues.slice(1, 2);
+	const size = Math.round(1000 * Math.sqrt(visualization[0]));
 	const color = colorHash.hex(visualization[0].toString());
 
 	return (
@@ -143,11 +143,16 @@ const AlbumCover = () => {
 
 export const AudiogramComposition = () => {
 	const { durationInFrames } = useVideoConfig();
+	const frame = useCurrentFrame();
 
 	const ref = useRef<HTMLDivElement>(null);
 
 	// Change this to adjust the part of the audio to use
 	const offset = 100;
+
+	const tilt = interpolate(frame - 200, [0, 90], [0, 360]);
+
+	console.log(tilt);
 
 	return (
 		<div ref={ref}>
@@ -157,17 +162,18 @@ export const AudiogramComposition = () => {
 						<Audio src={audioSource} />
 						{/* <Img src={jack} className="h-full m-auto" /> */}
 
-						<div className="mt-[46%]">
+						<div className="mt-[90%]">
 							<AudioViz />
 						</div>
 
 						<div className="absolute top-[4%]">
-							<CircleSplomper />
-						</div>
-
-						<div className="absolute left-[10%] top-[4%]">
+							{/* <CircleSplomper /> */}
 							<AlbumCover />
 						</div>
+
+						{/* <div className="absolute left-[10%] top-[4%]">
+							<AlbumCover />
+						</div> */}
 						{/* <Img
 							src={Cover}
 							className="absolute w-[500px] left-[50px] top-[30px] rounded-full border-[20px] border-black"
@@ -179,12 +185,17 @@ export const AudiogramComposition = () => {
 					</div>
 				</Sequence>
 				<Sequence from={100}>
-					<div className="absolute left-[10%] top-[20%] text-[200px] text-white">
-						BUY NOW
-					</div>
+					{frame <= 200 ? (
+						<div className="absolute left-[10%] top-[20%] text-[200px] text-white">
+							BUY NOW
+						</div>
+					) : null}
 				</Sequence>
-				<Sequence from={150}>
-					<div className="absolute right-[10%] top-[20%] text-[200px] text-white animate-spin">
+				<Sequence from={200}>
+					<div
+						className="absolute right-[10%] top-[20%] text-[200px] text-white"
+						style={{ transform: `rotate(${tilt}deg)` }}
+					>
 						BUY NOW
 					</div>
 				</Sequence>
