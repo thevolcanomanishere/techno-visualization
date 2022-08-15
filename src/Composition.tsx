@@ -20,6 +20,8 @@ import ColorHash from 'color-hash';
 
 import Cover from './assets/cover.png';
 
+const colorHash = new ColorHash();
+
 const AudioViz = () => {
 	const frame = useCurrentFrame();
 	const { fps } = useVideoConfig();
@@ -41,8 +43,6 @@ const AudioViz = () => {
 	const visualization = allVisualizationValues.slice(0, 68);
 
 	const mirrored = [...visualization.slice(1).reverse(), ...visualization];
-
-	const colorHash = new ColorHash();
 
 	return (
 		<div className="flex flex-row items-end h-48 gap-1">
@@ -83,14 +83,17 @@ const CircleSplomper = () => {
 
 	// Pick the low values because they look nicer than high values
 	// feel free to play around :)
-	const visualization = allVisualizationValues.slice(1, 2);
+	const visualization = allVisualizationValues.slice(2, 3);
 	const size = Math.round(1000 * Math.sqrt(visualization[0]));
+	const color = colorHash.hex(visualization[0].toString());
+
 	return (
 		<div
-			className="bg-white rounded-full"
+			className="bg-white rounded-lg animate-spin"
 			style={{
 				height: `${size}px`,
 				width: `${size}px`,
+				backgroundColor: color,
 			}}
 		/>
 	);
@@ -116,7 +119,7 @@ export const AudiogramComposition = () => {
 							<AudioViz />
 						</div>
 
-						<div className="absolute left-9 top-10">
+						<div className="absolute  top-[10%]">
 							<CircleSplomper />
 						</div>
 						{/* <Img
