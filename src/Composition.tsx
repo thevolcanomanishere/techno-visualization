@@ -78,38 +78,21 @@ const CircleSplomper = () => {
 		fps,
 		frame,
 		audioData,
-		numberOfSamples: 2048, // Use more samples to get a nicer visualisation
+		numberOfSamples: 256, // Use more samples to get a nicer visualisation
 	});
 
 	// Pick the low values because they look nicer than high values
 	// feel free to play around :)
-	const visualization = allVisualizationValues.slice(0, 1);
-	console.log(visualization);
-
+	const visualization = allVisualizationValues.slice(1, 2);
+	const size = Math.round(1000 * Math.sqrt(visualization[0]));
 	return (
 		<div
-			className="bg-white rounded-full "
+			className="bg-white rounded-full"
 			style={{
-				height: `${1000 * Math.sqrt(visualization[1])}%`,
-				width: `${1000 * Math.sqrt(visualization[1])}%`,
+				height: `${size}px`,
+				width: `${size}px`,
 			}}
-		>
-			{/* {mirrored.map((v, i) => {
-				// Const color = colorHash.hex(i.toString());
-				// console.log(color);
-				const color = i % 2 === 0 ? 'white' : 'red';
-				return (
-					<div
-						key={i}
-						className="w-[10px] rounded-full"
-						style={{
-							height: `${1000 * Math.sqrt(v)}%`,
-							backgroundColor: color,
-						}}
-					/>
-				);
-			})} */}
-		</div>
+		/>
 	);
 };
 
@@ -125,21 +108,17 @@ export const AudiogramComposition = () => {
 		<div ref={ref}>
 			<AbsoluteFill>
 				<Sequence from={-offset}>
-					<div className="flex flex-col items-center w-full h-full">
-						<Img
-							src={backgroundImage}
-							className="absolute w-full h-full mix-blend-overlay"
-						/>
+					<div className="relative flex flex-col items-center w-full h-full">
 						<Audio src={audioSource} />
 						{/* <Img src={jack} className="h-full m-auto" /> */}
 
-						<div className="mt-[45%]">
+						<div className="mt-[55%]">
 							<AudioViz />
 						</div>
 
-						{/* <div className="mt-[45%] ">
+						<div className="absolute left-9 top-10">
 							<CircleSplomper />
-						</div> */}
+						</div>
 						{/* <Img
 							src={Cover}
 							className="absolute w-[500px] left-[50px] top-[30px] rounded-full border-[20px] border-black"
