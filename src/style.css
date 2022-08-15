@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--remotion-font: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+		Noto Sans, sans-serif, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji';
+	--base-size: 48px;
+	background-image: url('https://www.transparenttextures.com/patterns/otis-redding.png');
+}
+
+.audio-viz {
+	display: flex;
+	flex-direction: row;
+	height: calc(var(--base-size) * 4);
+	align-items: center;
+	justify-content: center;
+	gap: calc(var(--base-size) * 0.25);
+	margin-top: var(--base-size);
+}
+
+/* .bar {
+	background-color: white;
+	border-radius: calc(var(--base-size) * 0.25);
+	width: calc(var(--base-size) * 0.25);
+} */
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.cover {
+	border-radius: 6px;
+}
+
+/* #turboBackground {
+	background: linear-gradient(
+		270deg,
+		#9d19aa,
+		#f5703d,
+		#34f309,
+		#0975f3,
+		#eee91e
+	);
+	background-size: 1000% 1000%;
+
+	-webkit-animation: animateBg 15s ease infinite;
+	-moz-animation: animateBg 15s ease infinite;
+	animation: animateBg 15s ease infinite;
+}
+
+@-webkit-keyframes animateBg {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@-moz-keyframes animateBg {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes animateBg {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
