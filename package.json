@@ -4,7 +4,8 @@
 	"description": "My Remotion video",
 	"scripts": {
 		"start": "remotion preview src/index.tsx",
-		"build": "remotion render src/index.tsx Audiogram out/video.mp4",
+		"build": "remotion render --concurrency=6 src/index.tsx Audiogram out/video.mp4",
+		"preview": "remotion render --frames=0-450 --concurrency=6 src/index.tsx Audiogram out/preview-video.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},

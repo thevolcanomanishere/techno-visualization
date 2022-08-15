@@ -1,17 +1,18 @@
 import { useAudioData } from '@remotion/media-utils';
 import { Composition } from 'remotion';
 import { AudiogramComposition } from './Composition';
+import audio from './assets/ikalanga.mp3';
 
 import './style.css';
 
 const fps = 30;
-const durationInFrames = 30 * fps;
+let durationInFrames = 30 * fps;
 
 export const RemotionVideo: React.FC = () => {
-	// Const audioData = useAudioData(audioSource);
-	// if (audioData) {
-	// DurationInFrames = Math.round(audioData?.durationInSeconds * fps);
-	// }
+	const audioData = useAudioData(audio);
+	if (audioData) {
+		durationInFrames = Math.round(audioData?.durationInSeconds * fps);
+	}
 
 	return (
 		<>
